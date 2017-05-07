@@ -1,0 +1,21 @@
+﻿@model FinalProjectMVC.Models.UserViewModel
+@{
+    ViewBag.Title = "Register";
+}
+
+<h2>Login</h2>
+
+@using (Html.BeginForm("Login", "Login", FormMethod.Post))
+{
+    @Html.LabelFor(m => m.email);
+    @Html.TextBoxFor(m => m.email);
+    <br>
+    @Html.LabelFor(m => m.password);
+    @Html.PasswordFor(m => m.password);
+    <br>
+    <input type="submit" class="btn btn-primary" />
+
+
+}
+
+<p>@TempData["Login"]</p> 

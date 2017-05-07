@@ -1,0 +1,22 @@
+﻿@model FinalProjectMVC.Models.User
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm("Update", "User", new { method = "PUT" }))
+{
+    @Html.LabelFor(m => m.name)
+    @Html.TextBoxFor(m => m.name)
+    @Html.ValidationMessageFor(m => m.name)
+    <br>
+    @Html.LabelFor(m => m.avatar)
+    @Html.TextBoxFor(m => m.avatar)
+
+    <button type="submit" class="btn btn-primary">Update Info</button>
+
+
+}
+

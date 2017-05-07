@@ -1,0 +1,86 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <script src="~/Scripts/modernizr-2.6.2.js"></script>
+    <script src="~/Scripts/jquery-1.10.2.js"></script>
+    <script src="~/Scripts/jquery.validate.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+
+    <script>
+            $(document).ready(function(){
+                $("input").addClass("form-control");
+                $("button").addClass("btn")
+                $("input").after("</br>")
+                
+            })
+
+    </script>
+    <style>
+        h1, h2, h3, h4, h5, h6, p {
+            //text-align: center;
+            font-family: 'Varela Round', sans-serif;
+        }
+        .avataricon {
+            height: 50px;
+            width: 50px;
+            border-radius: 10px;
+        }
+    </style>
+
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Register", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Login", "LoginPage", "Home", new { area = "" }, new { @class = "navbar-brand" })
+
+                @{
+                    if (Session["User"] == null)
+                    {
+                    }
+                    else
+                    {
+                        @Html.ActionLink("Home", "UserPage", "Home", new { id = @Convert.ToInt32(Session["User"]) }, new { @class = "navbar-brand" })
+                        @Html.ActionLink("All Users", "Index", "User", new { area = "" }, new { @class = "navbar-brand" })
+                        @Html.ActionLink("Following", "Following", "Follow", new { area = "" }, new { @class = "navbar-brand" })
+                        @Html.ActionLink("Followers", "Followers", "Follow", new { area = "" }, new { @class = "navbar-brand" })
+                        @Html.ActionLink("Feed", "Index", "Feed", new { area = "" }, new { @class = "navbar-brand" })
+
+                        @Html.ActionLink("Logout", "Logout", "User", new { area = "" }, new { @class = "btn btn-danger" })
+                    }
+
+                }
+                
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+        </footer>
+    </div>
+
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+</body>
+</html>

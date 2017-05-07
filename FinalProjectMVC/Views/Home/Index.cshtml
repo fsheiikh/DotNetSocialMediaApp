@@ -1,0 +1,50 @@
+﻿@model FinalProjectMVC.Models.User
+
+
+
+@{
+    ViewBag.Title = "Registration";
+}
+
+<h2>Registration</h2>
+
+@using (Html.BeginForm("Register", "Home"))
+{
+    @Html.LabelFor(m => m.name)
+    @Html.TextBoxFor(m => m.name)
+    @Html.ValidationMessageFor(m => m.name)
+    <br>
+    @Html.LabelFor(m => m.email)
+    @Html.TextBoxFor(m => m.email)
+    @Html.ValidationMessageFor(m => m.email)
+    <br>
+    @Html.LabelFor(m => m.avatar) 
+    @Html.TextBoxFor(m => m.avatar, new { @placeholder = "Image URL (Optional)"})
+    <br>
+    @Html.LabelFor(m => m.password)
+    @Html.PasswordFor(m => m.password)
+    @Html.ValidationMessageFor(m => m.password)
+    <br>
+    @Html.LabelFor(m => m.confirm_password)
+    @Html.PasswordFor(m => m.confirm_password)
+    @Html.ValidationMessageFor(m => m.confirm_password)
+    <br>
+    <button type="submit" class="btn btn-primary">Submit</button>
+    @Html.ActionLink("Login", "LoginPage", "Home", new { area = "" }, new { @class = "btn btn-warning" })
+
+
+}
+
+@{
+    foreach (var error in ViewBag.Errors)
+    {
+        //If there are any errors for a field...
+        if (@error.Errors.Count > 0)
+        {
+            // We show the first error for that field
+            <p>@error.Errors[0].ErrorMessage</p>
+        }
+    }
+}
+
+

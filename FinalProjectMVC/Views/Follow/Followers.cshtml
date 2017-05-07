@@ -1,0 +1,22 @@
+﻿@model FinalProjectMVC.Models.FollowerViewModel
+
+@{
+    ViewBag.Title = "Followers";
+}
+
+<h2>Followers</h2>
+
+@{
+
+    foreach (var user in Model.Follow)
+    {
+        <div class="well">
+            <h3><img class="avataricon" src="@user.Following.avatar" alt="user avatar" class="img-circle">@user.Following.name</h3>
+            @Html.ActionLink("View " + @user.Following.name + "'s Profile", "UserPage", "Home", new { id = @user.follower_id }, new { @class = "navbar-brand" })
+            <hr>
+        </div>
+
+    
+    }
+
+}

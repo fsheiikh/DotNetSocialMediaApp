@@ -1,0 +1,38 @@
+﻿@model FinalProjectMVC.Models.FeedViewModel
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Feed for users you follow</h2>
+<hr>
+
+<h4>Messages</h4>
+@{ 
+    foreach (var m in Model.Messages)
+    {
+    <div class="well">
+        <h5><b>@m.Messager.name</b> messaged: "@m.message" to <b>@m.Messaged.name</b> at @m.created_at</h5>
+        
+
+    </div>
+        }
+
+}
+<br>
+<br>
+
+
+<h4>Comments</h4>
+@{
+    foreach (var c in Model.Comments)
+    {
+        <div class="well">
+            <h5><b>@c.User.name</b> commented: "@c.comment" on a message by <b>@c.Message.Messager.name</b> at @c.created_at</h5>
+
+
+        </div>
+    }
+
+}
+
